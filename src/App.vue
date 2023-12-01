@@ -1,4 +1,6 @@
 <script>
+import numeral from "numeral"
+
 export default {
   name: "AppVue",
   created() {
@@ -43,9 +45,9 @@ export default {
                     name: "Новые Авто (ОПА)",
                     selectedOption: null,
                     options: [
-                      { id: 21, name: "Марка1" },
-                      { id: 27, name: "Марка2" },
-                      { id: 28, name: "Марка3" },
+                      { id: 21, name: "Марка1", value: 710308 },
+                      { id: 27, name: "Марка2", value: 482113 },
+                      { id: 28, name: "Марка3", value: 280105 },
                     ]
                   },
                   {
@@ -54,9 +56,9 @@ export default {
                     name: "Вторичный Рынок (МПА)",
                     selectedOption: null,
                     options: [
-                      { id: 22, name: "Выкуп" },
-                      { id: 25, name: "Trade In" },
-                      { id: 26, name: "Комиссия" }
+                      { id: 22, name: "Выкуп", value: 206 },
+                      { id: 25, name: "Trade In", value: 58 },
+                      { id: 26, name: "Комиссия", value:  999 },
                     ]
                   },
                   {
@@ -65,7 +67,7 @@ export default {
                     name: "Допоборудование (ОДО)",
                     selectedOption: null,
                     options: [
-                      { id: 23, name: "ОДО" },
+                      { id: 23, name: "ОДО", value: 852 },
                     ]
                   },
                   {
@@ -74,7 +76,7 @@ export default {
                     name: "Финансовые Сервисы (ФС)",
                     selectedOption: null,
                     options: [
-                      { id: 24, name: "ФС" },
+                      { id: 24, name: "ФС", value: 858 },
                     ]
                   }
                 ]
@@ -107,6 +109,7 @@ export default {
     },
     updateSubcategories(level, options, optionId, event) {
       this.listOfSelections[level].selectedOption = optionId
+      let target = event.target
 
       if (options) {
         const subSelector = this.getSubSelector(level, options)
@@ -122,12 +125,14 @@ export default {
           }
           this.listOfSelections.push(newSelection)
 
+          if (!target.classList.contains("option")) target = target.parentElement
+
           // Draw connection line
           this.$nextTick(() => {
             const groups = document.getElementsByClassName("group")
             const group = groups[groups.length - 1]
             const groupHeader = group.childNodes[0]
-            const line = new LeaderLine(event.target, groupHeader)
+            const line = new LeaderLine(target, groupHeader)
             line.setOptions({
               color: 'black',
               size: 1,
@@ -138,6 +143,10 @@ export default {
           })
         }
       }
+    },
+    formattedValue(value) {
+      if (value === undefined) return ""
+      return numeral(value).format('0.0a')
     },
   },
 }
@@ -170,7 +179,8 @@ export default {
                 :class="{'selectedOption': selection.selectedOption === option.id}"
                 @click="updateSubcategories(index, selection.options, option.id, $event)"
               >
-                {{ option.name }}
+                <div>{{ option.name }}</div>
+                <div>{{ formattedValue(option.value) }}</div>
               </div>
             </div>
           </div>
