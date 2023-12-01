@@ -148,6 +148,10 @@ export default {
       if (value === undefined) return ""
       return numeral(value).format('0.0a')
     },
+    calculateWidth(value, options) {
+      const maxValue = Math.max(...options.map(option => option.value))
+      return (value / maxValue) * 100
+    },
   },
 }
 </script>
@@ -172,7 +176,10 @@ export default {
           <div class="group">
             <h2 :for="`${selection.id}`">{{ selection.selectorName }}</h2>
             <div 
-              v-for="option in selection.options" :key="option.id" :value="option.id"
+              v-for="option in selection.options"
+              :key="option.id"
+              :value="option.id"
+              :style="{ width: calculateWidth(option.value, selection.options) + '%' }"
             >
               <div 
                 class="option"
@@ -267,9 +274,12 @@ export default {
 .option {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
   padding: 0 15px;
   width: 100%;
   height: 32px;
+  min-width: fit-content;
   background-color: #F3F1F1;
   border-radius: 17px;
   font-size: 12px;
@@ -278,6 +288,7 @@ export default {
   cursor: pointer;
   margin-top: 4px;
   margin-bottom: 4px;
+  white-space: nowrap;
 }
 .selectedOption {
   border: 1px solid;
