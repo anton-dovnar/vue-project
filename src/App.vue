@@ -232,6 +232,7 @@ export default {
   background-color: #fff;
   border-radius: 17px;
   padding: 12px;
+  user-select: none;
 }
 .group-container {
   position: relative;
@@ -270,6 +271,7 @@ export default {
   background-position: calc(100% - 10px) center;
   background-repeat: no-repeat;
   background-size: 24px 24px;
+  background-color: #fff;
 }
 .option {
   display: flex;
