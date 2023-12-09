@@ -10,12 +10,14 @@ const initialOptions = {
       id: 1,
       selectorName: "Бизнес Сегмент",
       name: "Подразделение 1",
+      value: 12343467.40,
       selectedOption: null,
       options: [
         {
           id: 10,
           selectorName: "Бизнес Сфера",
           name: "Продажи",
+          value: 12343467.40,
           selectedOption: null,
           options: [
             {
@@ -70,11 +72,123 @@ const initialOptions = {
       id: 2,
       selectorName: "Бизнес Сегмент",
       name: "Подразделение 2",
+      value: 12343467.40,
+      options: [
+        {
+          id: 10,
+          selectorName: "Бизнес Сфера",
+          name: "Продажи",
+          value: 12343467.40,
+          selectedOption: null,
+          options: [
+            {
+              id: 11,
+              selectorName: "Нижний Уровень",
+              name: "Новые Авто (ОПА)",
+              value: 8259602.96,
+              selectedOption: null,
+              options: [
+                { id: 21, name: "Марка1", value: 710308 },
+                { id: 27, name: "Марка2", value: 482113 },
+                { id: 28, name: "Марка3", value: 280105 },
+              ]
+            },
+            {
+              id: 12,
+              selectorName: "Нижний Уровень",
+              name: "Вторичный Рынок (МПА)",
+              value: 3739911.55,
+              selectedOption: null,
+              options: [
+                { id: 22, name: "Выкуп", value: 206 },
+                { id: 25, name: "Trade In", value: 58 },
+                { id: 26, name: "Комиссия", value: 999 },
+              ]
+            },
+            {
+              id: 13,
+              selectorName: "Нижний Уровень",
+              name: "Допоборудование (ОДО)",
+              value: 171337.37,
+              selectedOption: null,
+              options: [
+                { id: 23, name: "ОДО", value: 852 },
+              ]
+            },
+            {
+              id: 14,
+              selectorName: "Нижний Уровень",
+              name: "Финансовые Сервисы (ФС)",
+              value: 172615.52,
+              selectedOption: null,
+              options: [
+                { id: 24, name: "ФС", value: 858 },
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       id: 3,
       selectorName: "Бизнес Сегмент",
       name: "Подразделение 3",
+      value: 12343467.40,
+      options: [
+        {
+          id: 10,
+          selectorName: "Бизнес Сфера",
+          name: "Продажи",
+          value: 12343467.40,
+          selectedOption: null,
+          options: [
+            {
+              id: 11,
+              selectorName: "Нижний Уровень",
+              name: "Новые Авто (ОПА)",
+              value: 8259602.96,
+              selectedOption: null,
+              options: [
+                { id: 21, name: "Марка1", value: 710308 },
+                { id: 27, name: "Марка2", value: 482113 },
+                { id: 28, name: "Марка3", value: 280105 },
+              ]
+            },
+            {
+              id: 12,
+              selectorName: "Нижний Уровень",
+              name: "Вторичный Рынок (МПА)",
+              value: 3739911.55,
+              selectedOption: null,
+              options: [
+                { id: 22, name: "Выкуп", value: 206 },
+                { id: 25, name: "Trade In", value: 58 },
+                { id: 26, name: "Комиссия", value: 999 },
+              ]
+            },
+            {
+              id: 13,
+              selectorName: "Нижний Уровень",
+              name: "Допоборудование (ОДО)",
+              value: 171337.37,
+              selectedOption: null,
+              options: [
+                { id: 23, name: "ОДО", value: 852 },
+              ]
+            },
+            {
+              id: 14,
+              selectorName: "Нижний Уровень",
+              name: "Финансовые Сервисы (ФС)",
+              value: 172615.52,
+              selectedOption: null,
+              options: [
+                { id: 24, name: "ФС", value: 858 },
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }
@@ -120,6 +234,7 @@ export default {
         for (let selection of this.listOfSelections.slice(0, level)) {
           for (let option of selection.options) {
             if (option.id === selection.selectedOption) {
+              if (!option.originalValue) option.originalValue = option.value
               option.value = value
               this.valuesToClean[option.id] = option
             }
@@ -127,14 +242,14 @@ export default {
         }
       }
     },
-    cleanUpperLevelValues() {
+    resetUpperLevelValues() {
       for (const option of Object.values(this.valuesToClean)) {
-        delete option.value
+        option.value = option.originalValue
       }
     },
     updateSubcategories(level, options, optionId, value, event) {
       if (level < 2) {
-        this.cleanUpperLevelValues()
+        this.resetUpperLevelValues()
       } else {
         this.setUpperLevelValues(level, optionId, value)
       }
