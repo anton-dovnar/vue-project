@@ -216,6 +216,7 @@ export default {
       ],
       initialOptions: initialOptions,
       valuesToClean: {},
+      previousLevel: null,
     }
   },
   methods: {
@@ -228,16 +229,13 @@ export default {
         if (selector.line) selector.line.remove()
       }
     },
-    setUpperLevelValues(level, optionId, value) {
-      const buisinessSphereIds = new Set([11, 12, 13, 14])
-      if (buisinessSphereIds.has(optionId)) {
-        for (let selection of this.listOfSelections.slice(0, level)) {
-          for (let option of selection.options) {
-            if (option.id === selection.selectedOption) {
-              if (!option.originalValue) option.originalValue = option.value
-              option.value = value
-              this.valuesToClean[option.id] = option
-            }
+    setUpperLevelValues(level, value) {
+      for (let selection of this.listOfSelections.slice(0, level)) {
+        for (let option of selection.options) {
+          if (option.id === selection.selectedOption) {
+            if (!option.originalValue) option.originalValue = option.value
+            option.value = value
+            this.valuesToClean[option.id] = option
           }
         }
       }
@@ -248,10 +246,10 @@ export default {
       }
     },
     updateSubcategories(level, options, optionId, value, event) {
-      if (level < 2) {
+      if (this.previousLevel && this.previousLevel > level) {
         this.resetUpperLevelValues()
       } else {
-        this.setUpperLevelValues(level, optionId, value)
+        this.setUpperLevelValues(level, value)
       }
 
       this.listOfSelections[level].selectedOption = optionId
@@ -289,6 +287,8 @@ export default {
           })
         }
       }
+
+      this.previousLevel = level
     },
     formattedValue(value) {
       if (value === undefined) return ""
