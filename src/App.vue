@@ -240,6 +240,21 @@ export default {
         }
       }
     },
+    redrawLines() {
+      for (let selection of this.listOfSelections) {
+        if (selection.line) {
+          selection.line.remove()
+          const line = new LeaderLine(selection.from, selection.to)
+          line.setOptions({
+            color: 'black',
+            size: 1,
+            startPlug: 'behind',
+            endPlug: 'arrow1',
+          })
+          selection.line = line
+        }
+      }
+    },
     resetUpperLevelValues() {
       for (const option of Object.values(this.valuesToClean)) {
         option.value = option.originalValue
@@ -250,6 +265,9 @@ export default {
         this.resetUpperLevelValues()
       } else {
         this.setUpperLevelValues(level, value)
+        this.$nextTick(() => {
+          this.redrawLines()
+        })
       }
 
       this.listOfSelections[level].selectedOption = optionId
@@ -284,6 +302,8 @@ export default {
               endPlug: 'arrow1',
             })
             this.listOfSelections[this.listOfSelections.length - 1].line = line
+            this.listOfSelections[this.listOfSelections.length - 1].from = target
+            this.listOfSelections[this.listOfSelections.length - 1].to = groupHeader
           })
         }
       }
