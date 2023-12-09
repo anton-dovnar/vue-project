@@ -265,10 +265,11 @@ export default {
         this.resetUpperLevelValues()
       } else {
         this.setUpperLevelValues(level, value)
-        this.$nextTick(() => {
-          this.redrawLines()
-        })
       }
+      // Redraw constructed lines
+      this.$nextTick(() => {
+        this.redrawLines()
+      })
 
       this.listOfSelections[level].selectedOption = optionId
       let target = event.target
