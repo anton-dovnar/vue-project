@@ -1,6 +1,84 @@
 <script>
 import numeral from "numeral"
 
+const initialOptions = {
+  id: 0,
+  selectorName: "Подразделениe",
+  selectedOption: null,
+  options: [
+    {
+      id: 1,
+      selectorName: "Бизнес Сегмент",
+      name: "Подразделение 1",
+      selectedOption: null,
+      options: [
+        {
+          id: 10,
+          selectorName: "Бизнес Сфера",
+          name: "Продажи",
+          selectedOption: null,
+          options: [
+            {
+              id: 11,
+              selectorName: "Нижний Уровень",
+              name: "Новые Авто (ОПА)",
+              value: 8259602.96,
+              selectedOption: null,
+              options: [
+                { id: 21, name: "Марка1", value: 710308 },
+                { id: 27, name: "Марка2", value: 482113 },
+                { id: 28, name: "Марка3", value: 280105 },
+              ]
+            },
+            {
+              id: 12,
+              selectorName: "Нижний Уровень",
+              name: "Вторичный Рынок (МПА)",
+              value: 3739911.55,
+              selectedOption: null,
+              options: [
+                { id: 22, name: "Выкуп", value: 206 },
+                { id: 25, name: "Trade In", value: 58 },
+                { id: 26, name: "Комиссия", value: 999 },
+              ]
+            },
+            {
+              id: 13,
+              selectorName: "Нижний Уровень",
+              name: "Допоборудование (ОДО)",
+              value: 171337.37,
+              selectedOption: null,
+              options: [
+                { id: 23, name: "ОДО", value: 852 },
+              ]
+            },
+            {
+              id: 14,
+              selectorName: "Нижний Уровень",
+              name: "Финансовые Сервисы (ФС)",
+              value: 172615.52,
+              selectedOption: null,
+              options: [
+                { id: 24, name: "ФС", value: 858 },
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: 2,
+      selectorName: "Бизнес Сегмент",
+      name: "Подразделение 2",
+    },
+    {
+      id: 3,
+      selectorName: "Бизнес Сегмент",
+      name: "Подразделение 3",
+    }
+  ]
+}
+
 export default {
   name: "AppVue",
   created() {
@@ -22,79 +100,8 @@ export default {
         "Средняя цена",
         "Продажи (шт.)",
       ],
-      initialOptions: {
-        id: 0,
-        selectorName: "Подразделениe",
-        selectedOption: null,
-        options: [
-          {
-            id: 1,
-            selectorName: "Бизнес Сегмент",
-            name: "Подразделение 1",
-            selectedOption: null,
-            options: [
-              {
-                id: 10,
-                selectorName: "Бизнес Сфера",
-                name: "Продажи",
-                selectedOption: null,
-                options: [
-                  {
-                    id: 11,
-                    selectorName: "Нижний Уровень",
-                    name: "Новые Авто (ОПА)",
-                    selectedOption: null,
-                    options: [
-                      { id: 21, name: "Марка1", value: 710308 },
-                      { id: 27, name: "Марка2", value: 482113 },
-                      { id: 28, name: "Марка3", value: 280105 },
-                    ]
-                  },
-                  {
-                    id: 12,
-                    selectorName: "Нижний Уровень",
-                    name: "Вторичный Рынок (МПА)",
-                    selectedOption: null,
-                    options: [
-                      { id: 22, name: "Выкуп", value: 206 },
-                      { id: 25, name: "Trade In", value: 58 },
-                      { id: 26, name: "Комиссия", value:  999 },
-                    ]
-                  },
-                  {
-                    id: 13,
-                    selectorName: "Нижний Уровень",
-                    name: "Допоборудование (ОДО)",
-                    selectedOption: null,
-                    options: [
-                      { id: 23, name: "ОДО", value: 852 },
-                    ]
-                  },
-                  {
-                    id: 14,
-                    selectorName: "Нижний Уровень",
-                    name: "Финансовые Сервисы (ФС)",
-                    selectedOption: null,
-                    options: [
-                      { id: 24, name: "ФС", value: 858 },
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            id: 2,
-            selectorName: "Бизнес Сегмент",
-            name: "Подразделение 2",
-          }, 
-          {
-            id: 3,
-            selectorName: "Бизнес Сегмент",
-            name: "Подразделение 3",
-          }
-        ]
-      }
+      initialOptions: initialOptions,
+      valuesToClean: {},
     }
   },
   methods: {
@@ -107,7 +114,31 @@ export default {
         if (selector.line) selector.line.remove()
       }
     },
-    updateSubcategories(level, options, optionId, event) {
+    setUpperLevelValues(level, optionId, value) {
+      const buisinessSphereIds = new Set([11, 12, 13, 14])
+      if (buisinessSphereIds.has(optionId)) {
+        for (let selection of this.listOfSelections.slice(0, level)) {
+          for (let option of selection.options) {
+            if (option.id === selection.selectedOption) {
+              option.value = value
+              this.valuesToClean[option.id] = option
+            }
+          }
+        }
+      }
+    },
+    cleanUpperLevelValues() {
+      for (const option of Object.values(this.valuesToClean)) {
+        delete option.value
+      }
+    },
+    updateSubcategories(level, options, optionId, value, event) {
+      if (level < 2) {
+        this.cleanUpperLevelValues()
+      } else {
+        this.setUpperLevelValues(level, optionId, value)
+      }
+
       this.listOfSelections[level].selectedOption = optionId
       let target = event.target
 
@@ -184,7 +215,7 @@ export default {
               <div 
                 class="option"
                 :class="{'selectedOption': selection.selectedOption === option.id}"
-                @click="updateSubcategories(index, selection.options, option.id, $event)"
+                @click="updateSubcategories(index, selection.options, option.id, option.value, $event)"
               >
                 <div>{{ option.name }}</div>
                 <div>{{ formattedValue(option.value) }}</div>
@@ -227,7 +258,7 @@ export default {
 .group {
   display: flex;
   flex-direction: column;
-  width: 258px;
+  min-width: 258px;
   min-height: 120px;
   background-color: #fff;
   border-radius: 17px;
