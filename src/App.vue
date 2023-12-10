@@ -1,5 +1,5 @@
 <script>
-import numeral from "numeral"
+import numeral from "numeral";
 
 const initialOptions = {
   id: 0,
@@ -10,14 +10,14 @@ const initialOptions = {
       id: 1,
       selectorName: "Бизнес Сегмент",
       name: "Подразделение 1",
-      value: 12343467.40,
+      value: 12343467.4,
       selectedOption: null,
       options: [
         {
           id: 10,
           selectorName: "Бизнес Сфера",
           name: "Продажи",
-          value: 12343467.40,
+          value: 12343467.4,
           selectedOption: null,
           options: [
             {
@@ -30,7 +30,7 @@ const initialOptions = {
                 { id: 21, name: "Марка1", value: 710308 },
                 { id: 27, name: "Марка2", value: 482113 },
                 { id: 28, name: "Марка3", value: 280105 },
-              ]
+              ],
             },
             {
               id: 12,
@@ -42,7 +42,7 @@ const initialOptions = {
                 { id: 22, name: "Выкуп", value: 206 },
                 { id: 25, name: "Trade In", value: 58 },
                 { id: 26, name: "Комиссия", value: 999 },
-              ]
+              ],
             },
             {
               id: 13,
@@ -50,9 +50,7 @@ const initialOptions = {
               name: "Допоборудование (ОДО)",
               value: 171337.37,
               selectedOption: null,
-              options: [
-                { id: 23, name: "ОДО", value: 852 },
-              ]
+              options: [{ id: 23, name: "ОДО", value: 852 }],
             },
             {
               id: 14,
@@ -60,25 +58,23 @@ const initialOptions = {
               name: "Финансовые Сервисы (ФС)",
               value: 172615.52,
               selectedOption: null,
-              options: [
-                { id: 24, name: "ФС", value: 858 },
-              ]
-            }
-          ]
-        }
-      ]
+              options: [{ id: 24, name: "ФС", value: 858 }],
+            },
+          ],
+        },
+      ],
     },
     {
       id: 2,
       selectorName: "Бизнес Сегмент",
       name: "Подразделение 2",
-      value: 12343467.40,
+      value: 12343467.4,
       options: [
         {
           id: 10,
           selectorName: "Бизнес Сфера",
           name: "Продажи",
-          value: 12343467.40,
+          value: 12343467.4,
           selectedOption: null,
           options: [
             {
@@ -91,7 +87,7 @@ const initialOptions = {
                 { id: 21, name: "Марка1", value: 710308 },
                 { id: 27, name: "Марка2", value: 482113 },
                 { id: 28, name: "Марка3", value: 280105 },
-              ]
+              ],
             },
             {
               id: 12,
@@ -103,7 +99,7 @@ const initialOptions = {
                 { id: 22, name: "Выкуп", value: 206 },
                 { id: 25, name: "Trade In", value: 58 },
                 { id: 26, name: "Комиссия", value: 999 },
-              ]
+              ],
             },
             {
               id: 13,
@@ -111,9 +107,7 @@ const initialOptions = {
               name: "Допоборудование (ОДО)",
               value: 171337.37,
               selectedOption: null,
-              options: [
-                { id: 23, name: "ОДО", value: 852 },
-              ]
+              options: [{ id: 23, name: "ОДО", value: 852 }],
             },
             {
               id: 14,
@@ -121,25 +115,23 @@ const initialOptions = {
               name: "Финансовые Сервисы (ФС)",
               value: 172615.52,
               selectedOption: null,
-              options: [
-                { id: 24, name: "ФС", value: 858 },
-              ]
-            }
-          ]
-        }
-      ]
+              options: [{ id: 24, name: "ФС", value: 858 }],
+            },
+          ],
+        },
+      ],
     },
     {
       id: 3,
       selectorName: "Бизнес Сегмент",
       name: "Подразделение 3",
-      value: 12343467.40,
+      value: 12343467.4,
       options: [
         {
           id: 10,
           selectorName: "Бизнес Сфера",
           name: "Продажи",
-          value: 12343467.40,
+          value: 12343467.4,
           selectedOption: null,
           options: [
             {
@@ -152,7 +144,7 @@ const initialOptions = {
                 { id: 21, name: "Марка1", value: 710308 },
                 { id: 27, name: "Марка2", value: 482113 },
                 { id: 28, name: "Марка3", value: 280105 },
-              ]
+              ],
             },
             {
               id: 12,
@@ -164,7 +156,7 @@ const initialOptions = {
                 { id: 22, name: "Выкуп", value: 206 },
                 { id: 25, name: "Trade In", value: 58 },
                 { id: 26, name: "Комиссия", value: 999 },
-              ]
+              ],
             },
             {
               id: 13,
@@ -172,9 +164,7 @@ const initialOptions = {
               name: "Допоборудование (ОДО)",
               value: 171337.37,
               selectedOption: null,
-              options: [
-                { id: 23, name: "ОДО", value: 852 },
-              ]
+              options: [{ id: 23, name: "ОДО", value: 852 }],
             },
             {
               id: 14,
@@ -182,22 +172,20 @@ const initialOptions = {
               name: "Финансовые Сервисы (ФС)",
               value: 172615.52,
               selectedOption: null,
-              options: [
-                { id: 24, name: "ФС", value: 858 },
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
+              options: [{ id: 24, name: "ФС", value: 858 }],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
 
 export default {
   name: "AppVue",
   created() {
-    this.listOfSelections.push(this.initialOptions)
-    this.selectedTargetParameter = this.targetParameters[0]
+    this.listOfSelections.push(this.initialOptions);
+    this.selectedTargetParameter = this.targetParameters[0];
   },
   data() {
     return {
@@ -215,69 +203,28 @@ export default {
         "Продажи (шт.)",
       ],
       initialOptions: initialOptions,
-      valuesToClean: {},
-      previousLevel: null,
-    }
+    };
   },
   methods: {
     getSubSelector(level, options) {
-      const selectedOptionId = this.listOfSelections[level].selectedOption
-      return options.filter(selector => selector.id === selectedOptionId).shift()
+      const selectedOptionId = this.listOfSelections[level].selectedOption;
+      return options
+        .filter((selector) => selector.id === selectedOptionId)
+        .shift();
     },
     removeLines(level) {
       for (let selector of this.listOfSelections.slice(level + 1)) {
-        if (selector.line) selector.line.remove()
-      }
-    },
-    setUpperLevelValues(level, value) {
-      for (let selection of this.listOfSelections.slice(0, level)) {
-        for (let option of selection.options) {
-          if (option.id === selection.selectedOption) {
-            if (!option.originalValue) option.originalValue = option.value
-            option.value = value
-            this.valuesToClean[option.id] = option
-          }
-        }
-      }
-    },
-    redrawLines() {
-      for (let selection of this.listOfSelections) {
-        if (selection.line) {
-          selection.line.remove()
-          const line = new LeaderLine(selection.from, selection.to)
-          line.setOptions({
-            color: 'black',
-            size: 1,
-            startPlug: 'behind',
-            endPlug: 'arrow1',
-          })
-          selection.line = line
-        }
-      }
-    },
-    resetUpperLevelValues() {
-      for (const option of Object.values(this.valuesToClean)) {
-        option.value = option.originalValue
+        if (selector.line) selector.line.remove();
       }
     },
     updateSubcategories(level, options, optionId, value, event) {
-      if (this.previousLevel && this.previousLevel > level) {
-        this.resetUpperLevelValues()
-      } else {
-        this.setUpperLevelValues(level, value)
-      }
-      // Redraw constructed lines
-      this.$nextTick(() => {
-        this.redrawLines()
-      })
-
-      this.listOfSelections[level].selectedOption = optionId
-      let target = event.target
+      this.listOfSelections[level].selectedOption = optionId;
+      let target = event.target;
 
       if (options) {
-        const subSelector = this.getSubSelector(level, options)
-        this.removeLines(level)
-        this.listOfSelections.splice(level + 1)
+        const subSelector = this.getSubSelector(level, options);
+        this.removeLines(level);
+        this.listOfSelections.splice(level + 1);
 
         if (subSelector.options) {
           let newSelection = {
@@ -285,42 +232,43 @@ export default {
             selectorName: subSelector.selectorName,
             selectedOption: null,
             options: subSelector.options,
-          }
-          this.listOfSelections.push(newSelection)
+          };
+          this.listOfSelections.push(newSelection);
 
-          if (!target.classList.contains("option")) target = target.parentElement
+          if (!target.classList.contains("option"))
+            target = target.parentElement;
 
           // Draw connection line
           this.$nextTick(() => {
-            const groups = document.getElementsByClassName("group")
-            const group = groups[groups.length - 1]
-            const groupHeader = group.childNodes[0]
-            const line = new LeaderLine(target, groupHeader)
+            const groups = document.getElementsByClassName("group");
+            const group = groups[groups.length - 1];
+            const groupHeader = group.childNodes[0];
+            const line = new LeaderLine(target, groupHeader);
             line.setOptions({
-              color: 'black',
+              color: "black",
               size: 1,
-              startPlug: 'behind',
-              endPlug: 'arrow1',
-            })
-            this.listOfSelections[this.listOfSelections.length - 1].line = line
-            this.listOfSelections[this.listOfSelections.length - 1].from = target
-            this.listOfSelections[this.listOfSelections.length - 1].to = groupHeader
-          })
+              startPlug: "behind",
+              endPlug: "arrow1",
+            });
+            this.listOfSelections[this.listOfSelections.length - 1].line = line;
+            this.listOfSelections[this.listOfSelections.length - 1].from =
+              target;
+            this.listOfSelections[this.listOfSelections.length - 1].to =
+              groupHeader;
+          });
         }
       }
-
-      this.previousLevel = level
     },
     formattedValue(value) {
-      if (value === undefined) return ""
-      return numeral(value).format('0.0a')
+      if (value === undefined) return "";
+      return numeral(value).format("0.0a");
     },
     calculateWidth(value, options) {
-      const maxValue = Math.max(...options.map(option => option.value))
-      return (value / maxValue) * 100
+      const maxValue = Math.max(...options.map((option) => option.value));
+      return (value / maxValue) * 100;
     },
   },
-}
+};
 </script>
 
 <template>
@@ -330,7 +278,11 @@ export default {
       <div class="target-parameter-container">
         <label for="target-parameter">Choose Parameter</label>
         <select id="target-parameter" v-model="selectedTargetParameter">
-          <option v-for="parameter in targetParameters" :key="parameter" :value="parameter">
+          <option
+            v-for="parameter in targetParameters"
+            :key="parameter"
+            :value="parameter"
+          >
             {{ parameter }}
           </option>
         </select>
@@ -338,20 +290,36 @@ export default {
     </header>
 
     <div id="selector-container">
-      <template v-for="(selection, index) in listOfSelections" :key="selection.id" :value="selection.id">
+      <template
+        v-for="(selection, index) in listOfSelections"
+        :key="selection.id"
+        :value="selection.id"
+      >
         <div class="group-container">
           <div class="group">
             <h2 :for="`${selection.id}`">{{ selection.selectorName }}</h2>
-            <div 
+            <div
               v-for="option in selection.options"
               :key="option.id"
               :value="option.id"
-              :style="{ width: calculateWidth(option.value, selection.options) + '%' }"
+              :style="{
+                width: calculateWidth(option.value, selection.options) + '%',
+              }"
             >
-              <div 
+              <div
                 class="option"
-                :class="{'selectedOption': selection.selectedOption === option.id}"
-                @click="updateSubcategories(index, selection.options, option.id, option.value, $event)"
+                :class="{
+                  selectedOption: selection.selectedOption === option.id,
+                }"
+                @click="
+                  updateSubcategories(
+                    index,
+                    selection.options,
+                    option.id,
+                    option.value,
+                    $event
+                  )
+                "
               >
                 <div>{{ option.name }}</div>
                 <div>{{ formattedValue(option.value) }}</div>
@@ -386,7 +354,7 @@ export default {
   width: fit-content;
   min-width: 100%;
   padding: 1rem;
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
   padding-left: 48px;
   padding-right: 48px;
   padding-top: 41px;
@@ -415,7 +383,7 @@ export default {
   width: 180px;
 }
 .target-parameter-container label {
-  color: #737B8A;
+  color: #737b8a;
   font-weight: 600;
   font-size: 14px;
   line-height: 20px;
@@ -424,7 +392,7 @@ export default {
 .target-parameter-container select {
   width: 180px;
   height: 48px;
-  border: 1px solid #CDD1DB;
+  border: 1px solid #cdd1db;
   outline: none;
   padding: 12px 16px 12px 16px;
   font-weight: 500;
@@ -434,7 +402,7 @@ export default {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url('src/assets/CaretDown1.png');
+  background-image: url("src/assets/CaretDown1.png");
   background-position: calc(100% - 10px) center;
   background-repeat: no-repeat;
   background-size: 24px 24px;
@@ -449,7 +417,7 @@ export default {
   width: 100%;
   height: 32px;
   min-width: fit-content;
-  background-color: #F3F1F1;
+  background-color: #f3f1f1;
   border-radius: 17px;
   font-size: 12px;
   line-height: 18px;
